@@ -49,7 +49,7 @@ public class OpeningMenu extends javax.swing.JFrame {
     static class GlobalVars{
         static String UserPhone = "";
         static String UserTwitter = "";
-        static String RandoDingen = "Cna874195?";
+        static String RandoDingen = "Put You email password here";
         static int UserProvider = 0;
         static Path UserPresetsPath;
         static boolean StartLoop = false;
@@ -97,7 +97,7 @@ public class OpeningMenu extends javax.swing.JFrame {
                     try {
                         con = (HttpURLConnection) url.openConnection();
                         con.setRequestMethod("GET");
-                        con.setRequestProperty("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAANIFEgEAAAAAC1%2F4cuMGUpNgGfdcfCteF%2F4JHSA%3DhSNOROobfSNHj3rrVJ3AnTi3i2X8NhZ6m7gBJut2NIK0NgB0XC");
+                        con.setRequestProperty("Authorization", "Bearer " + "Put your bearer authorization string here");
                         Reader readit = new InputStreamReader(con.getInputStream());
                         int data = readit.read();
                         while(data != -1){
@@ -193,7 +193,7 @@ public class OpeningMenu extends javax.swing.JFrame {
                     props.put("mail.smtp.ssl.enable", "true");          
                     Session session = Session.getInstance(props, new javax.mail.Authenticator(){
                     protected PasswordAuthentication getPasswordAuthentication() {
-                     return new PasswordAuthentication("1s22p63d104f14@gmail.com", GlobalVars.RandoDingen);
+                     return new PasswordAuthentication("Put Your Email Address here", GlobalVars.RandoDingen);
                           }
                      });
                     session.setDebug(true);
@@ -201,13 +201,13 @@ public class OpeningMenu extends javax.swing.JFrame {
 
                     try {
                     MimeMessage msg = new MimeMessage(session);
-                    msg.setFrom("1s2p63d104f14@gmail.com");
+                    msg.setFrom("Put Your Email Address here");
                     msg.setRecipients(Message.RecipientType.TO,
                     GlobalVars.UserPhone + GetProviderAddress());
                     msg.setSubject(GlobalVars.UserTwitter);
                     msg.setSentDate(new Date());
                     msg.setText(TweetChunk[3] + ": " + TweetText);
-                    Transport.send(msg,"1s22p63d104f14@gmail.com", GlobalVars.RandoDingen);
+                    Transport.send(msg,"Put Your Email Address here", GlobalVars.RandoDingen);
                     } catch (MessagingException mex) {
                     System.out.println("send failed, exception: " + mex);
                     }
